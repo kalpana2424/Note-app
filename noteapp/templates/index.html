@@ -1,0 +1,16 @@
+<form method="post">
+    {% csrf_token %}
+    <input types="text" name="note" placeholder="Enter your note" value=""/>
+    <input type="submit" value="Add"/>
+</form>
+
+<h1>--------------</h1>
+<ol>
+{% for note in notes %}
+    <li>
+        {{note.text}}
+        <a href="{% url 'edit_note' note.id %}">Edit</a>
+        <a href="{% url 'delete_note' note.id %}">Delete</a>
+    </li>
+{% endfor %}
+</ol>
